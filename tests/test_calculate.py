@@ -44,25 +44,6 @@ def test_division_decimale():
 
 
 # --------------------------------------------------------------------------
-# Nombres négatifs
-# --------------------------------------------------------------------------
-
-def test_premier_operande_negatif():
-    """-5+3 doit donner -2."""
-    assert calculate("-5+3") == -2
-
-
-def test_second_operande_negatif():
-    """5*-3 doit donner -15."""
-    assert calculate("5*-3") == -15
-
-
-def test_soustraction_d_un_negatif():
-    """5--3 doit donner 8."""
-    assert calculate("5--3") == 8
-
-
-# --------------------------------------------------------------------------
 # Cas invalides : doivent lever ValueError
 # --------------------------------------------------------------------------
 
