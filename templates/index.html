@@ -39,9 +39,15 @@
 <script>
    function appendToDisplay(value) {
       const display = document.getElementById('display');
+
+      if (resultShown && !['+', '-', '*', '/'].includes(value)) {display.value = '';}
+      
       display.value += value;
+      resultShown = false;
+   
    }
 
+   
    function clearDisplay() {
       document.getElementById('display').value = '';
    }
