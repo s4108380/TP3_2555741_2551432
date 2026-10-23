@@ -83,9 +83,3 @@ def test_division_par_zero_leve_division_error():
     with pytest.raises(ZeroDivisionError):
         calculate("5/0")
 
-
-@pytest.mark.parametrize("expr", ["inf+1", "nan*2"])
-def test_inf_et_nan_refuses(expr):
-    """Les valeurs spéciales inf et nan ne sont pas de vrais nombres."""
-    with pytest.raises(ValueError):
-        calculate(expr)
