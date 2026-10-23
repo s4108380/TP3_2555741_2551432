@@ -96,10 +96,10 @@ def test_operande_non_numerique():
 # Cas limites
 # --------------------------------------------------------------------------
 
-def test_division_par_zero_leve_value_error():
-    """5/0 doit être signalé comme ValueError, comme les autres erreurs
+def test_division_par_zero_leve_division_error():
+    """5/0 doit être signalé comme ZeroDivisionError, comme les autres erreurs
     de saisie, afin d'afficher un message cohérent dans l'interface."""
-    with pytest.raises(ValueError):
+    with pytest.raises(ZeroDivisionError):
         calculate("5/0")
 
 
