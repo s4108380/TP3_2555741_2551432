@@ -58,4 +58,4 @@ def divide(a, b):
     Raises:
         ZeroDivisionError: Si ``b`` vaut zéro.
     """
-    return a // b
+    return a / b
