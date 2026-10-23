@@ -37,6 +37,8 @@
 </div>
 
 <script>
+   let resultShown = document.getElementById('display').value !== '';
+
    function appendToDisplay(value) {
       const display = document.getElementById('display');
 
@@ -50,6 +52,7 @@
    
    function clearDisplay() {
       document.getElementById('display').value = '';
+      resultShown = false;
    }
 </script>
 </body>
