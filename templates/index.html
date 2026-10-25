@@ -7,11 +7,17 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+<!-- Conteneur principal de la calculatrice (centré par style.css) -->
 <div class="calculator">
    <h1>Flask Calculator</h1>
+   <!-- Le formulaire envoie l'expression en POST vers « / » (champ « display »).
+        Le serveur relit ce champ avec request.form.get('display'). -->
    <form method="POST">
+      <!-- Afficheur en lecture seule : la saisie passe uniquement par les boutons.
+           « result » est fourni par app.py (vide, nombre ou « Error: ... »). -->
       <input type="text" name="display" id="display" value="{{ result }}" readonly>
 
+      <!-- Grille de 4 colonnes : chiffres, opérateurs (+ - * /), C et = -->
       <div class="buttons">
          <button type="button" class="btn" onclick="appendToDisplay('1')">1</button>
          <button type="button" class="btn" onclick="appendToDisplay('2')">2</button>
@@ -30,6 +36,7 @@
 
          <button type="button" class="btn" onclick="appendToDisplay('0')">0</button>
          <button type="button" class="btn" onclick="clearDisplay()">C</button>
+         <!-- « = » soumet le formulaire ; les autres boutons sont de type « button » pour ne rien envoyer -->
          <button type="submit" class="btn operator">=</button>
          <button type="button" class="btn operator" onclick="appendToDisplay('/')">/</button>
       </div>
@@ -37,19 +44,34 @@
 </div>
 
 <script>
+   // Vrai tant que l'afficheur montre un résultat venant du serveur.
+   // Permet de repartir de zéro à la prochaine saisie (voir appendToDisplay).
    let resultShown = document.getElementById('display').value !== '';
 
+   /**
+    * Ajoute un caractère à la fin de l'afficheur.
+    *
+    * Si un résultat est affiché et que le caractère est un chiffre, l'afficheur
+    * est vidé d'abord (nouveau calcul). Un opérateur, lui, continue à partir
+    * du résultat affiché (ex. : « 5 » puis « + »).
+    *
+    * @param {string} value - Chiffre ou opérateur (+, -, *, /) saisi.
+    */
    function appendToDisplay(value) {
       const display = document.getElementById('display');
 
       if (resultShown && !['+', '-', '*', '/'].includes(value)) {display.value = '';}
-      
+
       display.value += value;
       resultShown = false;
-   
+
    }
 
-   
+
+   /**
+    * Vide l'afficheur (bouton « C »).
+    * Aucun appel au serveur : le champ est effacé côté navigateur seulement.
+    */
    function clearDisplay() {
       document.getElementById('display').value = '';
       resultShown = false;
