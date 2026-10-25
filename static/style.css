@@ -1,3 +1,4 @@
+/* Page : fond gris clair, calculatrice centrée horizontalement et verticalement. */
 body {
    font-family: Arial, sans-serif;
    background-color: #f0f0f0;
@@ -8,6 +9,7 @@ body {
    margin: 0;
 }
 
+/* Boîte de la calculatrice : largeur limitée à 600 px pour rester lisible sur grand écran. */
 .calculator {
    width: 100%;
    max-width: 600px;
@@ -18,12 +20,14 @@ body {
    text-align: center;
 }
 
+/* Titre de la calculatrice. */
 h1 {
    color: #fff;
    margin-bottom: 20px;
    font-size: 36px;
 }
 
+/* Afficheur : texte aligné à droite, comme une calculatrice classique. */
 #display {
    width: 100%;
    height: 80px;
@@ -37,12 +41,14 @@ h1 {
    color: #fff;
 }
 
+/* Grille de 4 colonnes égales : correspond à la disposition des boutons dans index.html. */
 .buttons {
    display: grid;
    grid-template-columns: repeat(4, 1fr);
    gap: 15px;
 }
 
+/* Style de base de tous les boutons (chiffres, C, opérateurs). */
 .btn {
    width: 100%;
    padding: 30px;
@@ -55,10 +61,12 @@ h1 {
    transition: background-color 0.2s;
 }
 
+/* États au survol et à l'appui : teinte plus foncée pour confirmer le clic. */
 .btn:hover {
    background-color: #555;
 }
 
+/* Boutons d'opération (+ - * / =) : couleur orange pour les distinguer des chiffres. */
 .operator {
    background-color: #ff9500;
 }
